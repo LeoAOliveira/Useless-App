@@ -9,67 +9,139 @@
 import UIKit
 import SceneKit
 import ARKit
+import Vision
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController, UIGestureRecognizerDelegate, ARSKViewDelegate, ARSessionDelegate, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+        
+    // MARK: - View controller lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
+        let overlayScene = SKScene()
+        overlayScene.scaleMode = .aspectFill
+        
         sceneView.delegate = self
-        
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
-        
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
-        sceneView.scene = scene
+        sceneView.session.delegate = self
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
-        // Run the view's session
         sceneView.session.run(configuration)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        // Do not enqueue other buffers for processing while another Vision task is still running.
+        // The camera stream has only a finite amount of buffers available; holding too many buffers for analysis would starve the camera.
+        guard currentBuffer == nil, case .normal = frame.camera.trackingState else {
+            return
+        }
         
-        // Pause the view's session
-        sceneView.session.pause()
+        // Retain the image buffer for Vision processing.
+        self.currentBuffer = frame.capturedImage
+        classifyCurrentImage()
     }
 
-    // MARK: - ARSCNViewDelegate
+    var currentBuffer: CVPixelBuffer?
+
+    let visionQueue = DispatchQueue(label: "LeonardoAOliveira.Leo-Useless-App")
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
+    func classifyCurrentImage() {
         
+        guard let orientation = CGImagePropertyOrientation(rawValue: UInt32(UIDevice.current.orientation.rawValue)) else { 
+            return
+        }
+        
+        let requestHandler = VNImageRequestHandler(cvPixelBuffer: currentBuffer!, orientation: orientation)
+        visionQueue.async {
+            do {
+                // Release the pixel buffer when done, allowing the next buffer to be processed.
+                defer { self.currentBuffer = nil }
+                try requestHandler.perform([self.classificationRequest])
+            } catch {
+                print("Error: Vision request failed with error \"\(error)\"")
+            }
+        }
+    }
+    
+    // Classification results
+    private var identifierString = ""
+    private var confidence: VNConfidence = 0.0
+    
+    // Handle completion of the Vision request and choose results to display.
+    /// - Tag: ProcessClassifications
+    func processClassifications(for request: VNRequest, error: Error?) {
+        guard let results = request.results else {
+            print("Unable to classify image.\n\(error!.localizedDescription)")
+            return
+        }
+        // The `results` will always be `VNClassificationObservation`s, as specified by the Core ML model in this project.
+        let classifications = results as! [VNClassificationObservation]
+        
+        // Show a label for the highest-confidence result (but only above a minimum confidence threshold).
+        if let bestResult = classifications.first(where: { result in result.confidence > 0.5 }),
+            let label = bestResult.identifier.split(separator: ",").first {
+            identifierString = String(label)
+            confidence = bestResult.confidence
+        } else {
+            identifierString = ""
+            confidence = 0
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.displayClassifierResults()
+        }
+    }
+
+    func displayClassifierResults() {
+        guard !self.identifierString.isEmpty else {
+            return // No object was classified.
+        }
+        let message = String(format: "Detected \(self.identifierString) with %.2f", self.confidence * 100) + "% confidence"
+        statusViewController.showMessage(message)
+    }
+        
+    var anchorLabels = [UUID: String]()
+
+        func placeLabelAtLocation(sender: UITapGestureRecognizer) {
+        let hitLocationInView = sender.location(in: sceneView)
+        let hitTestResults = sceneView.hitTest(hitLocationInView, types: [.featurePoint, .estimatedHorizontalPlane])
+        if let result = hitTestResults.first {
+            
+            let anchor = ARAnchor(transform: result.worldTransform)
+            sceneView.session.add(anchor: anchor)
+            
+            anchorLabels[anchor.identifier] = identifierString
+        }
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
+        setOverlaysHidden(true)
     }
     
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+    func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
+        /*
+         Allow the session to attempt to resume after an interruption.
+         This process may not succeed, so the app must be prepared
+         to reset the session if the relocalizing status continues
+         for a long time -- see `escalateFeedback` in `StatusViewController`.
+         */
+        return true
+    }
+
+    func setOverlaysHidden(_ shouldHide: Bool) {
+        sceneView.scene.children.forEach { node in
+            if shouldHide {
+                node.alpha = 0
+                
+            } else {
+                node.run(.fadeIn(withDuration: 0.5))
+            }
+        }
     }
 }
