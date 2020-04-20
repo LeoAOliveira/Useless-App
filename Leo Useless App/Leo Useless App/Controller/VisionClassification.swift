@@ -19,15 +19,15 @@ class VisionClassification {
     }
     
     // The pixel buffer being held for analysis; used to serialize Vision requests.
-    public var currentBuffer: CVPixelBuffer?
+    var currentBuffer: CVPixelBuffer?
     
     // Queue for dispatching vision classification requests
     // private let visionQueue = DispatchQueue(label: "com.example.apple-samplecode.ARKitVision.serialVisionQueue")
     private let visionQueue = DispatchQueue(label: "LeonardoAOliveira.Leo-Useless-App.serialVisionQueue")
     
     // Classification results
-    private var identifierString = ""
-    private var confidence: VNConfidence = 0.0
+    var identifierString = ""
+    var confidence: VNConfidence = 0.0
     
     // Vision classification request and model
     private lazy var classificationRequest: VNCoreMLRequest = {
@@ -51,7 +51,7 @@ class VisionClassification {
         }
     }()
     
-    private func classifyCurrentImage() {
+    func classifyCurrentImage() {
         
         let orientationRawValue: UInt32 = UInt32(UIDevice.current.orientation.rawValue)
         
@@ -87,20 +87,29 @@ class VisionClassification {
             print("Unable to classify image.\n\(error!.localizedDescription)")
             return
         }
-        // The results will always be VNRecognizedObjectObservation
-        
-        print(request)
         
         guard let classifications = results as? [VNRecognizedObjectObservation] else {
             return
         }
         
-        if let bestResult = classifications.first(where: { result in result.confidence > 0.5 }),
-            let label = bestResult.labels.map({$0.identifier}).first {
-            identifierString = String(label)
-            confidence = bestResult.confidence 
+         print(String(describing: classifications.first?.labels.map({"\($0.identifier) confidence: \($0.confidence)"}).joined(separator: "\n")))
+//        
+//        print(classifications.first)
         
+        if let bestResultConfidence = classifications.first?.labels.map({$0.confidence}).first, 
+            let bestResultIdentifier = classifications.first?.labels.map({$0.identifier}).first {
+            
+            if bestResultConfidence > 0.5 {
+                identifierString = String(bestResultIdentifier)
+                confidence = bestResultConfidence 
+                
+            } else {
+                print("ERROR2")
+                identifierString = ""
+                confidence = 0
+            }
         } else {
+            print("ERROR1")
             identifierString = ""
             confidence = 0
         }
@@ -113,13 +122,19 @@ class VisionClassification {
     // Show the classification results in the UI.
     private func displayClassifierResults() {
         
-        guard !self.identifierString.isEmpty else {
-            // No object was classified.
+        var title = String(format: "Procurando")
+        var subtitle = String(format: "Tracking normal")
+        
+        if self.identifierString != "" {
+            title = String(format: "\(self.identifierString)")
+            subtitle = String(format: "Detectado com %.2f", self.confidence * 100) + "% de confiança"
+        }
+        
+        guard let viewController = self.viewController else {
             return
         }
         
-        let message = String(format: "Detected \(self.identifierString) with %.2f", self.confidence * 100) + "% confidence"
-        print(message)
+        viewController.titleMessage(title)
+        viewController.subtitleMessage(subtitle)
     }
-    
 }

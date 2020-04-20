@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		A70B34EB244A8F74009BD022 /* LeoRoomObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A70B34EA244A8F74009BD022 /* LeoRoomObjectDetector.mlmodel */; };
 		A77A9402244B6CEB007D34B6 /* VisionClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A9401244B6CEB007D34B6 /* VisionClassification.swift */; };
-		A77A9406244B831E007D34B6 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A9405244B831E007D34B6 /* StatusViewController.swift */; };
 		A77A9408244B9983007D34B6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A9407244B9983007D34B6 /* Utilities.swift */; };
+		A77A940A244BD389007D34B6 /* ARHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A9409244BD389007D34B6 /* ARHandler.swift */; };
 		A7F1BB4C244A38F000649441 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F1BB4B244A38F000649441 /* AppDelegate.swift */; };
 		A7F1BB4E244A38F000649441 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = A7F1BB4D244A38F000649441 /* art.scnassets */; };
 		A7F1BB50244A38F000649441 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F1BB4F244A38F000649441 /* ViewController.swift */; };
@@ -22,8 +22,9 @@
 /* Begin PBXFileReference section */
 		A70B34EA244A8F74009BD022 /* LeoRoomObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LeoRoomObjectDetector.mlmodel; sourceTree = "<group>"; };
 		A77A9401244B6CEB007D34B6 /* VisionClassification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionClassification.swift; sourceTree = "<group>"; };
-		A77A9405244B831E007D34B6 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		A77A9407244B9983007D34B6 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		A77A9409244BD389007D34B6 /* ARHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARHandler.swift; sourceTree = "<group>"; };
+		A7C64AF2244E06B700EEEAE7 /* Senna.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Senna.mp4; sourceTree = "<group>"; };
 		A7F1BB48244A38F000649441 /* Leo Useless App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Leo Useless App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F1BB4B244A38F000649441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7F1BB4D244A38F000649441 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -49,8 +50,8 @@
 			isa = PBXGroup;
 			children = (
 				A7F1BB4F244A38F000649441 /* ViewController.swift */,
-				A77A9405244B831E007D34B6 /* StatusViewController.swift */,
 				A77A9401244B6CEB007D34B6 /* VisionClassification.swift */,
+				A77A9409244BD389007D34B6 /* ARHandler.swift */,
 				A77A9407244B9983007D34B6 /* Utilities.swift */,
 			);
 			path = Controller;
@@ -81,6 +82,7 @@
 				A7F1BB51244A38F000649441 /* Main.storyboard */,
 				A7F1BB54244A38F400649441 /* Assets.xcassets */,
 				A70B34EA244A8F74009BD022 /* LeoRoomObjectDetector.mlmodel */,
+				A7C64AF2244E06B700EEEAE7 /* Senna.mp4 */,
 				A7F1BB56244A38F400649441 /* LaunchScreen.storyboard */,
 				A7F1BB59244A38F400649441 /* Info.plist */,
 			);
@@ -163,8 +165,8 @@
 				A70B34EB244A8F74009BD022 /* LeoRoomObjectDetector.mlmodel in Sources */,
 				A77A9402244B6CEB007D34B6 /* VisionClassification.swift in Sources */,
 				A7F1BB50244A38F000649441 /* ViewController.swift in Sources */,
-				A77A9406244B831E007D34B6 /* StatusViewController.swift in Sources */,
 				A7F1BB4C244A38F000649441 /* AppDelegate.swift in Sources */,
+				A77A940A244BD389007D34B6 /* ARHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
