@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 import ARKit
 import SceneKit
+import AVFoundation
 
-class ARHandler: NSObject, ARSessionDelegate, ARSCNViewDelegate {
+class ARHandler: NSObject, ARSessionDelegate, ARSCNViewDelegate, AVAudioPlayerDelegate {
     
     weak var viewController: ViewController?
     var visionClassification: VisionClassification?
@@ -44,39 +45,133 @@ class ARHandler: NSObject, ARSessionDelegate, ARSCNViewDelegate {
             fatalError("missing expected associated label for anchor")
         }
         
-        guard let viewController = self.viewController else {
+        guard let sceneView = viewController?.sceneView else {
             return
         }
         
+        let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
+        
+        let rotateTransform = simd_mul(anchor.transform, rotate)
+        
         if labelText == "Senna" || labelText == "Bola" || labelText == "Rogerio" {
             
-            let url = URL(fileURLWithPath: (Bundle.main.path(forResource: "\(labelText)", ofType: "mp4")!))
+            let url = URL(fileURLWithPath: Bundle.main.path(forResource: labelText, ofType: "mp4")!)
             let player = AVPlayer(url: url)
             
-            let singleVideo = SCNPlane(width: 1.0, height: 1.0)
+            var width: CGFloat = 0.711
+            var height: CGFloat = 0.400
+            
+            
+            if labelText == "Bola" {
+                width = 0.536
+                height = 0.400
+            }
+            
+            let singleVideo = SCNPlane(width: width, height: height)
             singleVideo.firstMaterial?.diffuse.contents = player
+            singleVideo.firstMaterial?.isDoubleSided = true
             
             let screenNode = SCNNode(geometry: singleVideo)
             
-            screenNode.position.x = -0.25
-            screenNode.position.y = 1.0
-            screenNode.position.x = 0.0
+            screenNode.position.y = screenNode.position.y + 0.3
             
-            screenNode.eulerAngles.x = -90.0
-            screenNode.eulerAngles.y = 0.0
-            screenNode.eulerAngles.z = 112.5
+            screenNode.transform = SCNMatrix4(rotateTransform)
             
-            viewController.sceneView.scene.rootNode.addChildNode(screenNode)
+            node.addChildNode(screenNode)
+            
             player.play()
             
-        } else if labelText == "SPFC" || labelText == "Ronaldo" || labelText == "Rubinho" || labelText == "Honda" || labelText == "Paddock" {
-            // Montagem
+        } else if labelText == "SPFC" || labelText == "Rubinho" || labelText == "Honda" || labelText == "Paddock" {
+            
+            let url = URL(fileURLWithPath: Bundle.main.path(forResource: labelText, ofType: "mp4")!)
+            let player = AVPlayer(url: url)
+            
+            guard let scene = SCNScene(named: "art.scnassets/room.scn"),
+                let container = scene.rootNode.childNode(withName: "container", recursively: false),
+                let singleVideo = container.childNode(withName: "singleVideo", recursively: false), 
+                let firstImage = container.childNode(withName: "firstImage", recursively: false), 
+                let secondImage = container.childNode(withName: "secondImage", recursively: false) else {
+                return
+            }
+            
+            singleVideo.geometry?.firstMaterial?.diffuse.contents = player
+            singleVideo.geometry?.firstMaterial?.isDoubleSided = true
+            
+            firstImage.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "\(labelText)1")
+            secondImage.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "\(labelText)2")
+            
+            container.transform = SCNMatrix4(rotateTransform)
+            
+            node.addChildNode(container)            
+            player.play()
+            
+        } else if labelText == "Ronaldo" {
+            
+            let url1 = URL(fileURLWithPath: Bundle.main.path(forResource: "\(labelText)1", ofType: "mp4")!)
+            let player1 = AVPlayer(url: url1)
+            
+            let url2 = URL(fileURLWithPath: Bundle.main.path(forResource: "\(labelText)2", ofType: "mp4")!)
+            let player2 = AVPlayer(url: url2)
+            
+            guard let scene = SCNScene(named: "art.scnassets/room.scn"),
+                let doubleScreen = scene.rootNode.childNode(withName: "doubleScreen", recursively: false),
+                let firstVideo = doubleScreen.childNode(withName: "firstVideo", recursively: false), 
+                let secondVideo = doubleScreen.childNode(withName: "secondVideo", recursively: false) else {
+                return
+            }
+            
+            firstVideo.geometry?.firstMaterial?.diffuse.contents = player1
+            firstVideo.geometry?.firstMaterial?.isDoubleSided = true
+            
+            secondVideo.geometry?.firstMaterial?.diffuse.contents = player2
+            secondVideo.geometry?.firstMaterial?.isDoubleSided = true
+            
+            doubleScreen.transform = SCNMatrix4(rotateTransform)
+            
+            node.addChildNode(doubleScreen)
+            
+            player1.play()
+            player2.play()
             
         } else if labelText == "Ferrari" || labelText == "Fender" {
-            // Audio
+            
+            guard let source = SCNAudioSource(fileNamed: "\(labelText).mp3") else {
+                return
+            }
+            
+            let playAudio = SCNAction.playAudio(source, waitForCompletion: true)
+            
+            var textString = "\(labelText)"
+            
+            if labelText == "Ferrari" {
+                textString = "Ferrari V12"
+            } else {
+                textString = "Stratocaster"
+            }
+            
+            let text = SCNText(string: textString, extrusionDepth: 2)
+            let material = SCNMaterial()
+            material.diffuse.contents = UIColor.white
+            text.materials = [material]
+            
+            let textNode = SCNNode()
+            node.scale = SCNVector3(x: 0.01, y: 0.01, z: 0.01)
+            textNode.geometry = text
+            textNode.transform = SCNMatrix4(rotateTransform)
+            
+            node.addChildNode(textNode)
+            node.runAction(playAudio)
             
         } else if labelText == "Stock" || labelText == "Massa" {
-            // 3D
+            
+            guard let scene = SCNScene(named: "art.scnassets/room.scn"),
+                let model = scene.rootNode.childNode(withName: labelText, recursively: false) else {
+                return
+            }
+            
+            model.transform = SCNMatrix4(rotateTransform)
+            
+            node.addChildNode(model)
             
         } else {
             
@@ -120,12 +215,6 @@ class ARHandler: NSObject, ARSessionDelegate, ARSCNViewDelegate {
     }
     
     func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
-        /*
-         Allow the session to attempt to resume after an interruption.
-         This process may not succeed, so the app must be prepared
-         to reset the session if the relocalizing status continues
-         for a long time -- see `escalateFeedback` in `StatusViewController`.
-         */
         return true
     }
     

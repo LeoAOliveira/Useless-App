@@ -49,30 +49,27 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         arHandler = ARHandler(viewController: self, visionClassification: vision)
         sceneView.delegate = arHandler
-        
-        guard let scene = SCNScene(named: "art.scnassets/room.scn") else {
-            return
-        }
-        
-        // visionClassification = VisionClassification(viewController: self)
-        sceneView.delegate = arHandler
-        
-        sceneView.scene = scene
+        sceneView.session.delegate = arHandler
         
         blurView.layer.cornerRadius = 10.0
-        roundedBlurView.layer.cornerRadius = 50.0
-        sceneView.session.delegate = arHandler
+        roundedBlurView.layer.cornerRadius = 25.0
+        
+        blurView.clipsToBounds = true
+        roundedBlurView.clipsToBounds = true
         
         // Hook up status view controller callback.
         restartExperienceHandler = { [unowned self] in
             self.arHandler?.restartSession()
         }
+        
+        subtitleLabel.text = "Procurando..."
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         let configuration = ARWorldTrackingConfiguration()
+        // configuration.planeDetection = [.horizontal, .vertical]
         sceneView.session.run(configuration)
     }
     

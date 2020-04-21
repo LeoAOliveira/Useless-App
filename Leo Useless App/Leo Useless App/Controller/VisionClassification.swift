@@ -92,10 +92,6 @@ class VisionClassification {
             return
         }
         
-         print(String(describing: classifications.first?.labels.map({"\($0.identifier) confidence: \($0.confidence)"}).joined(separator: "\n")))
-//        
-//        print(classifications.first)
-        
         if let bestResultConfidence = classifications.first?.labels.map({$0.confidence}).first, 
             let bestResultIdentifier = classifications.first?.labels.map({$0.identifier}).first {
             
@@ -105,11 +101,9 @@ class VisionClassification {
                 
             } else {
                 print("ERROR2")
-                identifierString = ""
                 confidence = 0
             }
         } else {
-            print("ERROR1")
             identifierString = ""
             confidence = 0
         }
@@ -121,6 +115,10 @@ class VisionClassification {
     
     // Show the classification results in the UI.
     private func displayClassifierResults() {
+        
+        guard !self.identifierString.isEmpty else {
+            return // No object was classified.
+        }
         
         var title = String(format: "Procurando")
         var subtitle = String(format: "Tracking normal")

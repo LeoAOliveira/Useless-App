@@ -11,6 +11,17 @@
 		A77A9402244B6CEB007D34B6 /* VisionClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A9401244B6CEB007D34B6 /* VisionClassification.swift */; };
 		A77A9408244B9983007D34B6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A9407244B9983007D34B6 /* Utilities.swift */; };
 		A77A940A244BD389007D34B6 /* ARHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A9409244BD389007D34B6 /* ARHandler.swift */; };
+		A7BCF233244E402A00AED7C8 /* Ronaldo1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A7BCF22F244E3E2600AED7C8 /* Ronaldo1.mp4 */; };
+		A7BCF234244E402A00AED7C8 /* Bola.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A7BCF22C244E3E0100AED7C8 /* Bola.mp4 */; };
+		A7BCF239244E7E6300AED7C8 /* Honda.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A7BCF235244E5DD700AED7C8 /* Honda.mp4 */; };
+		A7BCF23A244E7E6300AED7C8 /* Rogerio.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A7BCF237244E5DE300AED7C8 /* Rogerio.mp4 */; };
+		A7BCF23B244E7E6300AED7C8 /* Senna.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A7BCF236244E5DDE00AED7C8 /* Senna.mp4 */; };
+		A7BCF23C244E7E6300AED7C8 /* SPFC.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A7BCF238244E5DE600AED7C8 /* SPFC.mp4 */; };
+		A7BCF23E244E928300AED7C8 /* Rubinho.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A7BCF23D244E928300AED7C8 /* Rubinho.mp4 */; };
+		A7BCF240244E929200AED7C8 /* Paddock.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A7BCF23F244E929200AED7C8 /* Paddock.mp4 */; };
+		A7BCF242244EBBC000AED7C8 /* Ronaldo2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A7BCF241244EBBBF00AED7C8 /* Ronaldo2.mp4 */; };
+		A7BCF245244F5A1600AED7C8 /* Ferrari.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7BCF243244F5A1500AED7C8 /* Ferrari.mp3 */; };
+		A7BCF246244F5A1600AED7C8 /* Fender.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7BCF244244F5A1600AED7C8 /* Fender.mp3 */; };
 		A7F1BB4C244A38F000649441 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F1BB4B244A38F000649441 /* AppDelegate.swift */; };
 		A7F1BB4E244A38F000649441 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = A7F1BB4D244A38F000649441 /* art.scnassets */; };
 		A7F1BB50244A38F000649441 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F1BB4F244A38F000649441 /* ViewController.swift */; };
@@ -24,7 +35,17 @@
 		A77A9401244B6CEB007D34B6 /* VisionClassification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionClassification.swift; sourceTree = "<group>"; };
 		A77A9407244B9983007D34B6 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		A77A9409244BD389007D34B6 /* ARHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARHandler.swift; sourceTree = "<group>"; };
-		A7C64AF2244E06B700EEEAE7 /* Senna.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Senna.mp4; sourceTree = "<group>"; };
+		A7BCF22C244E3E0100AED7C8 /* Bola.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bola.mp4; sourceTree = "<group>"; };
+		A7BCF22F244E3E2600AED7C8 /* Ronaldo1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ronaldo1.mp4; sourceTree = "<group>"; };
+		A7BCF235244E5DD700AED7C8 /* Honda.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Honda.mp4; sourceTree = "<group>"; };
+		A7BCF236244E5DDE00AED7C8 /* Senna.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Senna.mp4; sourceTree = "<group>"; };
+		A7BCF237244E5DE300AED7C8 /* Rogerio.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rogerio.mp4; sourceTree = "<group>"; };
+		A7BCF238244E5DE600AED7C8 /* SPFC.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SPFC.mp4; sourceTree = "<group>"; };
+		A7BCF23D244E928300AED7C8 /* Rubinho.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rubinho.mp4; sourceTree = "<group>"; };
+		A7BCF23F244E929200AED7C8 /* Paddock.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Paddock.mp4; sourceTree = "<group>"; };
+		A7BCF241244EBBBF00AED7C8 /* Ronaldo2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ronaldo2.mp4; sourceTree = "<group>"; };
+		A7BCF243244F5A1500AED7C8 /* Ferrari.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ferrari.mp3; sourceTree = "<group>"; };
+		A7BCF244244F5A1600AED7C8 /* Fender.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fender.mp3; sourceTree = "<group>"; };
 		A7F1BB48244A38F000649441 /* Leo Useless App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Leo Useless App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F1BB4B244A38F000649441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7F1BB4D244A38F000649441 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -50,8 +71,8 @@
 			isa = PBXGroup;
 			children = (
 				A7F1BB4F244A38F000649441 /* ViewController.swift */,
-				A77A9401244B6CEB007D34B6 /* VisionClassification.swift */,
 				A77A9409244BD389007D34B6 /* ARHandler.swift */,
+				A77A9401244B6CEB007D34B6 /* VisionClassification.swift */,
 				A77A9407244B9983007D34B6 /* Utilities.swift */,
 			);
 			path = Controller;
@@ -82,7 +103,17 @@
 				A7F1BB51244A38F000649441 /* Main.storyboard */,
 				A7F1BB54244A38F400649441 /* Assets.xcassets */,
 				A70B34EA244A8F74009BD022 /* LeoRoomObjectDetector.mlmodel */,
-				A7C64AF2244E06B700EEEAE7 /* Senna.mp4 */,
+				A7BCF22F244E3E2600AED7C8 /* Ronaldo1.mp4 */,
+				A7BCF241244EBBBF00AED7C8 /* Ronaldo2.mp4 */,
+				A7BCF22C244E3E0100AED7C8 /* Bola.mp4 */,
+				A7BCF235244E5DD700AED7C8 /* Honda.mp4 */,
+				A7BCF237244E5DE300AED7C8 /* Rogerio.mp4 */,
+				A7BCF236244E5DDE00AED7C8 /* Senna.mp4 */,
+				A7BCF238244E5DE600AED7C8 /* SPFC.mp4 */,
+				A7BCF23D244E928300AED7C8 /* Rubinho.mp4 */,
+				A7BCF23F244E929200AED7C8 /* Paddock.mp4 */,
+				A7BCF244244F5A1600AED7C8 /* Fender.mp3 */,
+				A7BCF243244F5A1500AED7C8 /* Ferrari.mp3 */,
 				A7F1BB56244A38F400649441 /* LaunchScreen.storyboard */,
 				A7F1BB59244A38F400649441 /* Info.plist */,
 			);
@@ -147,7 +178,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7BCF239244E7E6300AED7C8 /* Honda.mp4 in Resources */,
+				A7BCF246244F5A1600AED7C8 /* Fender.mp3 in Resources */,
+				A7BCF23A244E7E6300AED7C8 /* Rogerio.mp4 in Resources */,
+				A7BCF23B244E7E6300AED7C8 /* Senna.mp4 in Resources */,
+				A7BCF242244EBBC000AED7C8 /* Ronaldo2.mp4 in Resources */,
+				A7BCF23C244E7E6300AED7C8 /* SPFC.mp4 in Resources */,
+				A7BCF233244E402A00AED7C8 /* Ronaldo1.mp4 in Resources */,
+				A7BCF234244E402A00AED7C8 /* Bola.mp4 in Resources */,
+				A7BCF23E244E928300AED7C8 /* Rubinho.mp4 in Resources */,
+				A7BCF245244F5A1600AED7C8 /* Ferrari.mp3 in Resources */,
 				A7F1BB4E244A38F000649441 /* art.scnassets in Resources */,
+				A7BCF240244E929200AED7C8 /* Paddock.mp4 in Resources */,
 				A7F1BB58244A38F400649441 /* LaunchScreen.storyboard in Resources */,
 				A7F1BB55244A38F400649441 /* Assets.xcassets in Resources */,
 				A7F1BB53244A38F000649441 /* Main.storyboard in Resources */,
