@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A70B34EB244A8F74009BD022 /* LeoRoomObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A70B34EA244A8F74009BD022 /* LeoRoomObjectDetector.mlmodel */; };
+		A760AFE7244FC020002EC4C1 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = A760AFEA244FC020002EC4C1 /* Intents.intentdefinition */; };
+		A760AFE8244FC020002EC4C1 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = A760AFEA244FC020002EC4C1 /* Intents.intentdefinition */; };
 		A77A9402244B6CEB007D34B6 /* VisionClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A9401244B6CEB007D34B6 /* VisionClassification.swift */; };
 		A77A9408244B9983007D34B6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A9407244B9983007D34B6 /* Utilities.swift */; };
 		A77A940A244BD389007D34B6 /* ARHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77A9409244BD389007D34B6 /* ARHandler.swift */; };
@@ -24,8 +26,6 @@
 		A7BCF246244F5A1600AED7C8 /* Fender.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7BCF244244F5A1600AED7C8 /* Fender.mp3 */; };
 		A7EBF026244F915700226D38 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EBF025244F915700226D38 /* IntentHandler.swift */; };
 		A7EBF03C244F915700226D38 /* IntentLeo.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A7EBF023244F915700226D38 /* IntentLeo.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A7EBF045244F918B00226D38 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = A7EBF044244F918B00226D38 /* Intents.intentdefinition */; };
-		A7EBF046244F918B00226D38 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = A7EBF044244F918B00226D38 /* Intents.intentdefinition */; };
 		A7EBF049244F98ED00226D38 /* FutebolHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EBF048244F98ED00226D38 /* FutebolHandler.swift */; };
 		A7F1BB4C244A38F000649441 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F1BB4B244A38F000649441 /* AppDelegate.swift */; };
 		A7F1BB4E244A38F000649441 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = A7F1BB4D244A38F000649441 /* art.scnassets */; };
@@ -61,6 +61,11 @@
 
 /* Begin PBXFileReference section */
 		A70B34EA244A8F74009BD022 /* LeoRoomObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LeoRoomObjectDetector.mlmodel; sourceTree = "<group>"; };
+		A760AFE5244FC012002EC4C1 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		A760AFE6244FC013002EC4C1 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		A760AFEB244FC032002EC4C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/Intents.intentdefinition; sourceTree = "<group>"; };
+		A760AFED244FC039002EC4C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Intents.strings; sourceTree = "<group>"; };
+		A760AFEF244FC08C002EC4C1 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Intents.strings"; sourceTree = "<group>"; };
 		A77A9401244B6CEB007D34B6 /* VisionClassification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionClassification.swift; sourceTree = "<group>"; };
 		A77A9407244B9983007D34B6 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		A77A9409244BD389007D34B6 /* ARHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARHandler.swift; sourceTree = "<group>"; };
@@ -80,9 +85,8 @@
 		A7EBF025244F915700226D38 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		A7EBF027244F915700226D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7EBF02E244F915700226D38 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
-		A7EBF044244F918B00226D38 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		A7EBF048244F98ED00226D38 /* FutebolHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutebolHandler.swift; sourceTree = "<group>"; };
-		A7F1BB48244A38F000649441 /* Leo Useless App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Leo Useless App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7F1BB48244A38F000649441 /* Leo's App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Leo's App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F1BB4B244A38F000649441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7F1BB4D244A38F000649441 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		A7F1BB4F244A38F000649441 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -124,7 +128,7 @@
 		A7EBF024244F915700226D38 /* IntentLeo */ = {
 			isa = PBXGroup;
 			children = (
-				A7EBF044244F918B00226D38 /* Intents.intentdefinition */,
+				A760AFEA244FC020002EC4C1 /* Intents.intentdefinition */,
 				A7EBF025244F915700226D38 /* IntentHandler.swift */,
 				A7EBF048244F98ED00226D38 /* FutebolHandler.swift */,
 				A7EBF027244F915700226D38 /* Info.plist */,
@@ -153,7 +157,7 @@
 		A7F1BB49244A38F000649441 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A7F1BB48244A38F000649441 /* Leo Useless App.app */,
+				A7F1BB48244A38F000649441 /* Leo's App.app */,
 				A7EBF023244F915700226D38 /* IntentLeo.appex */,
 			);
 			name = Products;
@@ -222,7 +226,7 @@
 			);
 			name = "Leo Useless App";
 			productName = "Leo Useless App";
-			productReference = A7F1BB48244A38F000649441 /* Leo Useless App.app */;
+			productReference = A7F1BB48244A38F000649441 /* Leo's App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -250,6 +254,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = A7F1BB3F244A38F000649441;
 			productRefGroup = A7F1BB49244A38F000649441 /* Products */;
@@ -300,7 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7EBF049244F98ED00226D38 /* FutebolHandler.swift in Sources */,
-				A7EBF046244F918B00226D38 /* Intents.intentdefinition in Sources */,
+				A760AFE8244FC020002EC4C1 /* Intents.intentdefinition in Sources */,
 				A7EBF026244F915700226D38 /* IntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,7 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7EBF045244F918B00226D38 /* Intents.intentdefinition in Sources */,
+				A760AFE7244FC020002EC4C1 /* Intents.intentdefinition in Sources */,
 				A77A9408244B9983007D34B6 /* Utilities.swift in Sources */,
 				A70B34EB244A8F74009BD022 /* LeoRoomObjectDetector.mlmodel in Sources */,
 				A77A9402244B6CEB007D34B6 /* VisionClassification.swift in Sources */,
@@ -330,10 +335,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A760AFEA244FC020002EC4C1 /* Intents.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A760AFEB244FC032002EC4C1 /* Base */,
+				A760AFED244FC039002EC4C1 /* en */,
+				A760AFEF244FC08C002EC4C1 /* pt-BR */,
+			);
+			name = Intents.intentdefinition;
+			sourceTree = "<group>";
+		};
 		A7F1BB51244A38F000649441 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A7F1BB52244A38F000649441 /* Base */,
+				A760AFE5244FC012002EC4C1 /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -342,6 +358,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A7F1BB57244A38F400649441 /* Base */,
+				A760AFE6244FC013002EC4C1 /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -391,6 +408,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -451,6 +469,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -515,7 +534,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "LeonardoAOliveira.Leo-Useless-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Leo's App";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -535,7 +554,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "LeonardoAOliveira.Leo-Useless-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Leo's App";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

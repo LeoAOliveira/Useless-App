@@ -102,11 +102,11 @@
 				<array>
 					<dict>
 						<key>INIntentResponseCodeConciseFormatString</key>
-						<string>Siri: ${resposta}</string>
+						<string>${resposta}</string>
 						<key>INIntentResponseCodeConciseFormatStringID</key>
 						<string>n1QgrH</string>
 						<key>INIntentResponseCodeFormatString</key>
-						<string>Siri: ${resposta}</string>
+						<string>${resposta}</string>
 						<key>INIntentResponseCodeFormatStringID</key>
 						<string>7Blv0d</string>
 						<key>INIntentResponseCodeName</key>
